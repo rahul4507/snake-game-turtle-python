@@ -141,6 +141,7 @@ class GameController:
                 if self.snake.head.distance(segment) < 10:
                     self.is_game_on = False
 
+        self.scoreboard.reset_score()
         self.game_over()
 
     def trigger_jackpot(self):
@@ -173,3 +174,9 @@ class GameController:
         self.screen.bye()
 
 
+def main():
+    game = GameController()
+    game.screen.mainloop()
+
+if __name__ == '__main__':
+    main()
