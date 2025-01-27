@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, flash
-import subprocess
+
+from main import GameController
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for flash messages
@@ -14,10 +15,9 @@ def home():
 def play():
     try:
         # Run the Python game script and wait for it to complete
-        result = subprocess.run(['python', 'main.py'], check=True)
+        game = GameController()
+        game.screen.mainloop()
         flash("Game completed successfully!", "success")
-    except subprocess.CalledProcessError as e:
-        flash(f"An error occurred while running the game: {e}", "error")
     except Exception as e:
         flash(f"Unexpected error: {e}", "error")
     return redirect(url_for('home'))

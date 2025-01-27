@@ -173,10 +173,3 @@ class GameController:
         self.screen.bye()
 
 
-def main():
-    game = GameController()
-    game.screen.mainloop()
-
-
-if __name__ == "__main__":
-    main()
